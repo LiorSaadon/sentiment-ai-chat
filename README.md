@@ -3,7 +3,7 @@ The chat will detect your sentiment and replay with an Emoji and an Image
 [Link to demo video](https://github.com/LiorSaadon/sentiment-ai-chat/raw/master/ai-chat-sentiment.mp4)
 
 
-- Buit with Nuxt + Vue 3
+- Built with Nuxt + Vue 3
 
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
