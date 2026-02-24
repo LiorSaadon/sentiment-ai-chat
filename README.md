@@ -1,11 +1,7 @@
 # Sentiment AI chat
 The chat will detect your sentiment and replay with an Emoji and an Image
+[Link to demo video](https://github.com/LiorSaadon/sentiment-ai-chat/raw/master/ai-chat-sentiment.mp4)
 
-<p align="center">
-  <video src="https://github.com/LiorSaadon/sentiment-ai-chat/raw/master/ai-chat-sentiment.mp4" controls width="640">
-    Your browser does not support the video tag.
-  </video>
-</p>
 
 - Buit with Nuxt + Vue 3
 
