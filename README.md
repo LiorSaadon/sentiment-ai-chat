@@ -1,4 +1,8 @@
-# Nuxt Minimal Starter
+# Sentiment AI chat
+the chat will detect your sentiment and replay with an Emoji and an Image
+
+buit with Nuxt + Vue 3
+
 
 Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
