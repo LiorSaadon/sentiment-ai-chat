@@ -1,20 +1,34 @@
 <script setup lang="ts">
 import { Chat } from "@ai-sdk/vue";
 import { ref } from "vue";
+import WordCloud from "vue3-word-cloud";
 
 const input = ref("");
 const chat = new Chat({});
+
+type SentimentWord = {
+  text: string;
+  weight: number;
+};
 
 const extractImageUrl = (text: string): string | null => {
   const urlMatch = text.match(/https?:\/\/\S+/);
   return urlMatch ? urlMatch[0] : null;
 };
 
-const getLineSegments = (text: string): { line: string; imageUrl: string | null }[] => {
+const getLineSegments = (
+  text: string,
+): { line: string; imageUrl: string | null }[] => {
   return text.split("\n").map((line) => {
     const imageUrl = extractImageUrl(line);
     return { line, imageUrl };
   });
+};
+
+const getSentimentWords = (part: any): SentimentWord[] => {
+  if (!part || part.type !== "tool-sentimentWordCloud") return [];
+
+  return Array.isArray(part.output?.words) ? part.output?.words : [];
 };
 
 const handleSubmit = (e: Event) => {
@@ -70,6 +84,17 @@ const handleSubmit = (e: Event) => {
                     />
                   </div>
                 </template>
+              </div>
+
+              <div
+                v-else-if="part.type === 'tool-sentimentWordCloud'"
+                class="word-cloud-wrapper"
+              >
+                <WordCloud
+                  :words="getSentimentWords(part).map((w) => [w.text, w.weight])"
+                  :spacing="0.25"
+                  :color="() => '#e5e7eb'"
+                />
               </div>
             </div>
           </div>
@@ -290,6 +315,19 @@ const handleSubmit = (e: Event) => {
   transform: translateY(0);
   box-shadow: 0 8px 16px rgba(37, 99, 235, 0.45);
 }
+
+.word-cloud-wrapper {
+  margin-top: 8px;
+  width: 100%;
+  height: 160px;
+}
+
+.word-cloud-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
 
 @media (max-width: 640px) {
   .chat-card {

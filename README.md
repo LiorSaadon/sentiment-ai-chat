@@ -10,6 +10,11 @@ Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduct
 
 ## Setup
 
+1. You will need to add a new file under the root directory named ".env"
+2. inside the .env file add this line:
+   NUXT_OPENROUTER_API_KEY={YOUR OPENROUTER API KEY}
+
+
 Make sure to install dependencies:
 
 ```bash
